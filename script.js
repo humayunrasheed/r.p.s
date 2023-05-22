@@ -56,9 +56,11 @@ function game(){
         }
         if(player>=3){
            console.log('You Won the Match');
+           break;
         }
         else if(computer>=3){
            console.log("You Lose the match");
+           break;
         }
     }
 }
