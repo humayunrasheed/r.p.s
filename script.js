@@ -16,24 +16,50 @@ function playRound(pS , cS){
         return(`Tie ${pS} to ${cS}`);
     }
     else if(pS==="Rock" && cS==="Scissors" ){
-        return(`You Won! ${pS} beats ${cS}`);
+        return(`You Won!`);
     }
     else if(pS==="Paper" && cS==="Rock" ){
-        return(`You Won! ${pS} beats ${cS}`);
+        return(`You Won!}`);
     }
     else if(pS==="Scissors" && cS==="Paper" ){
-        return(`You Won! ${pS} beats ${cS}`);
+        return(`You Won!`);
     }
     else if(pS==="Rock" && cS==="Paper" ){
-        return(`You Lose! ${cS} beats ${pS}`);
+        return(`You Lose!`);
     }
     else if(pS==="Paper" && cS==="Scissors" ){
-        return(`You Lose! ${cS} beats ${pS}`);
+        return(`You Lose!`);
     }
     else if(pS==="Scissors" && cS==="Rock" ){
-        return(`You Lose! ${cS} beats ${pS}`);
+        return(`You Lose!`);
+    }
+    else{
+        return("Enter a valid Choice.")
     }
 }
-
-let pS="Rock";
-let cS=getComputerChoice();
+function game(){
+    let computer= 0,player=0;
+    for(i=1;i<=5;i++){
+        pS=prompt("Enter the Choice :");
+        cS=getComputerChoice();
+        out = playRound(pS,cS);
+        if(out==='You Won!'){
+            player=player+1;
+            console.log( out + ` ${pS} beats ${cS}.`);
+        }
+        else if(out==="You Lose!"){
+            computer= computer + 1;
+             console.log( out + ` ${cS} beats ${pS}.`);
+        }
+        else{
+             console.log(out);
+        }
+        if(player>=3){
+           console.log('You Won the Match');
+        }
+        else if(computer>=3){
+           console.log("You Lose the match");
+        }
+    }
+}
+let player=0 , computer=0,output, pS,cS,out;
