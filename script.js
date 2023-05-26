@@ -15,6 +15,7 @@ function playRound(pS){
     let cS = getComputerChoice();
     if( (pS==="Rock" && cS==="Rock" )|| (pS==='Paper' && cS==="Paper")||(pS==="Scissors"&&cS==="Scissors")){
         one.textContent=`Tie ${pS} to ${cS}`;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Rock" && cS==="Scissors" ){
         one.textContent=`You Won! ${pS} beats ${cS}.`;
@@ -53,17 +54,17 @@ function playRound(pS){
         player=0;
         computer=0;
         two.textContent='You Won the Match';
-        container.removeChild(Rock);
-        container.removeChild(Paper);
-        container.removeChild(Scissors);
+        // container.removeChild(Rock);
+        // container.removeChild(Paper);
+        // container.removeChild(Scissors);
      }
     else if(computer==5){
         player=0;
         computer=0;
         two.textContent="You Lose the match";
-        container.removeChild(Rock);
-        container.removeChild(Paper);
-        container.removeChild(Scissors);
+        // container.removeChild(Rock);
+        // container.removeChild(Paper);
+        // container.removeChild(Scissors);
      }
 }
 function game(){
@@ -96,8 +97,8 @@ function game(){
         container.appendChild(Scissors);
     }
 }
-const startGame = document.querySelector("#startGame");
-startGame.addEventListener('click',game);
+// const startGame = document.querySelector("#startGame");
+// startGame.addEventListener('click',game);
 output = document.querySelector('#output');
 one = document.createElement('p');
 one.classList.add('one');
@@ -105,3 +106,4 @@ two = document.createElement('p');
 two.classList.add('two');
 output.appendChild(one);
 output.appendChild(two);
+game();
