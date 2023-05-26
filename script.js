@@ -39,7 +39,8 @@ function playRound(pS , cS){
 }
 function game(){
     let computer= 0,player=0;
-    for(i=1;i<=5;i++){
+    let i=true
+    while(i){
         pS=prompt("Enter the Choice :");
         cS=getComputerChoice();
         out = playRound(pS,cS);
@@ -54,14 +55,15 @@ function game(){
         else{
              console.log(out);
         }
-        if(player>=3){
-           console.log('You Won the Match');
+        if(player==5){
+           result='You Won the Match';
            break;
         }
-        else if(computer>=3){
-           console.log("You Lose the match");
+        else if(computer==5){
+           result="You Lose the match";
            break;
         }
     }
+    return result;
 }
 let player=0 , computer=0,output, pS,cS,out;
