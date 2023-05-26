@@ -11,59 +11,104 @@ function getComputerChoice(){
         return "Scissors";
     }
 }
-function playRound(pS , cS){
+function playRound(pS){
+    let cS = getComputerChoice();
     if( (pS==="Rock" && cS==="Rock" )|| (pS==='Paper' && cS==="Paper")||(pS==="Scissors"&&cS==="Scissors")){
-        return(`Tie ${pS} to ${cS}`);
+        one.textContent=`Tie ${pS} to ${cS}`;
     }
     else if(pS==="Rock" && cS==="Scissors" ){
-        return(`You Won!`);
+        one.textContent=`You Won! ${pS} beats ${cS}.`;
+        player++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Paper" && cS==="Rock" ){
-        return(`You Won!}`);
+        one.textContent=`You Won! ${pS} beats ${cS}.`;
+        player++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Scissors" && cS==="Paper" ){
-        return(`You Won!`);
+        one.textContent=`You Won! ${pS} beats ${cS}.`;
+        player++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Rock" && cS==="Paper" ){
-        return(`You Lose!`);
+        one.textContent=`You Lose! ${cS} beats ${pS}.`;
+        computer++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Paper" && cS==="Scissors" ){
-        return(`You Lose!`);
+        one.textContent=`You Lose! ${cS} beats ${pS}.`;
+        computer++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else if(pS==="Scissors" && cS==="Rock" ){
-        return(`You Lose!`);
+        one.textContent=`You Lose! ${cS} beats ${pS}.`;
+        computer++;
+        two.textContent=`Player : Computer = ${player} : ${computer}`;
     }
     else{
-        return("Enter a valid Choice.")
+        console.log("Enter a valid Choice.")
     }
+    if(player==5){
+        player=0;
+        computer=0;
+        two.textContent='You Won the Match';
+        gm = false;
+        container.removeChild(Rock);
+        container.removeChild(Paper);
+        container.removeChild(Scissors);
+     }
+    else if(computer==5){
+        player=0;
+        computer=0;
+        two.textContent="You Lose the match";
+        gm= false
+        container.removeChild(Rock);
+        container.removeChild(Paper);
+        container.removeChild(Scissors);
+     }
 }
 function game(){
-    let computer= 0,player=0;
-    let i=true
-    while(i){
-        pS=prompt("Enter the Choice :");
-        cS=getComputerChoice();
-        out = playRound(pS,cS);
-        if(out==='You Won!'){
-            player=player+1;
-            console.log( out + ` ${pS} beats ${cS}.`);
-        }
-        else if(out==="You Lose!"){
-            computer= computer + 1;
-             console.log( out + ` ${cS} beats ${pS}.`);
-        }
-        else{
-             console.log(out);
-        }
-        if(player==5){
-           result='You Won the Match';
-           break;
-        }
-        else if(computer==5){
-           result="You Lose the match";
-           break;
-        }
+    computer= 0,player=0;
+    one.textContent="";
+    two.textContent="";
+    if(gm=false){
+        container.removeChild(Rock);
+        container.removeChild(Paper);
+        container.removeChild(Scissors);
     }
-    return result;
+    {   
+        container = document.querySelector('#container');
+
+        Rock=document.createElement('button');
+        Rock.classList.add('btn');
+        Rock.textContent="Rock";
+        Rock.addEventListener('click', () => {
+            playRound('Rock');
+        });
+        Paper=document.createElement('button');
+        Paper.classList.add('btn');
+        Paper.textContent="Paper";
+        Paper.addEventListener('click', () => {
+            playRound('Paper');
+        });
+        Scissors=document.createElement('button');
+        Scissors.classList.add('btn');
+        Scissors.textContent="Scissors";
+        Scissors.addEventListener('click', () => {
+            playRound('Scissors');
+        });
+        container.appendChild(Rock);
+        container.appendChild(Paper);
+        container.appendChild(Scissors);
+    }
 }
-let player=0 , computer=0,output, pS,cS,out;
+const startGame = document.querySelector("#startGame");
+startGame.addEventListener('click',game);
+output = document.querySelector('#output');
+one = document.createElement('p');
+one.classList.add('one');
+two = document.createElement('p');
+two.classList.add('two');
+output.appendChild(one);
+output.appendChild(two);
