@@ -53,7 +53,6 @@ function playRound(pS){
         player=0;
         computer=0;
         two.textContent='You Won the Match';
-        gm = false;
         container.removeChild(Rock);
         container.removeChild(Paper);
         container.removeChild(Scissors);
@@ -62,7 +61,6 @@ function playRound(pS){
         player=0;
         computer=0;
         two.textContent="You Lose the match";
-        gm= false
         container.removeChild(Rock);
         container.removeChild(Paper);
         container.removeChild(Scissors);
@@ -72,11 +70,6 @@ function game(){
     computer= 0,player=0;
     one.textContent="";
     two.textContent="";
-    if(gm=false){
-        container.removeChild(Rock);
-        container.removeChild(Paper);
-        container.removeChild(Scissors);
-    }
     {   
         container = document.querySelector('#container');
 
